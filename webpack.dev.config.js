@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 
@@ -15,12 +14,11 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
-    new MiniCssExtractPlugin({filename: "[name].css", chunkFilename: "[id].css"}),
     new HtmlWebpackPlugin({template: './src/index.html'}),
     new OptimizeCSSAssetsPlugin({}),
     new UglifyJsPlugin({
       cache: true,
-      parallel: true,
+      parallel: true
       //sourceMap: true
     })
   ],
@@ -33,7 +31,7 @@ module.exports = {
       {
         test: /\.(sc|c)ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          'style-loader',
           'css-loader',
           {loader: 'postcss-loader',
             options: {
