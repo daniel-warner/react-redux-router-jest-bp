@@ -1,8 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 
 module.exports = {
@@ -14,13 +12,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
-    new HtmlWebpackPlugin({template: './src/index.html'}),
-    new OptimizeCSSAssetsPlugin({}),
-    new UglifyJsPlugin({
-      cache: true,
-      parallel: true
-      //sourceMap: true
-    })
+    new HtmlWebpackPlugin({template: './src/index.html'})
   ],
   devServer: {
     contentBase: "/",
